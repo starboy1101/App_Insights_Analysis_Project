@@ -1,0 +1,19 @@
+{
+  "apps": 9659,
+  "avg_rating": 4.173267447535383,
+  "categories": 33,
+  "rated": 8196,
+  "rating_ge_4": 6287,
+  "updated_2018": 6287,
+  "size_mean_mb": 20.398467500889574,
+  "size_median_mb": 12.0,
+  "size_p25_mb": 4.6,
+  "size_p75_mb": 28.0,
+  "size_min_mb": 0.0085,
+  "size_max_mb": 100.0,
+  "highest_install_threshold": 1000000000.0,
+  "highest_install_ties": 20,
+  "five_star_apps": 271,
+  "installs_min_total": 75322526427,
+  "paid_rated": 602
+}

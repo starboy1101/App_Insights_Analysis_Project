@@ -1,0 +1,177 @@
+[
+  [
+    "B01",
+    "What is the average app rating?",
+    "The mean rating is 4.173 out of 5 across 8,196 rated apps. Each app has equal weight. The 1,463 apps without a rating are excluded from this mean, but retained for counts, installs and other relevant calculations.",
+    "Mean of non-missing Rating values.",
+    ""
+  ],
+  [
+    "B02",
+    "How many unique categories are there?",
+    "There are 33 categories after removing the malformed record. FAMILY has the largest number of app names, 1,874; GAME has 946. Category size describes this sample, not the current size of the entire Play Store.",
+    "Count distinct Category values.",
+    ""
+  ],
+  [
+    "B03",
+    "What is the distribution of app sizes?",
+    "Among 8,431 apps with a known size, the median is 12.00 MB and the mean is 20.40 MB. The middle half ranges from 4.60 to 28.00 MB. The distribution has a long upper tail, with values from 0.0085 to 100 MB. Device-dependent sizes are unknown, not zero.",
+    "Convert M to MB and k to MB using k / 1,000; plot known sizes.",
+    "size_histogram"
+  ],
+  [
+    "B04",
+    "How many apps are free or paid?",
+    "There are 8,905 free apps (92.19%) and 754 paid apps (7.81%). One missing Type value is classified as Free because its recorded price is zero. A free listing can still earn money through advertising or purchases inside the app; those revenues are not measured here.",
+    "Count Type after the documented zero-price inference.",
+    ""
+  ],
+  [
+    "B05",
+    "What is the most common content rating?",
+    "Everyone is the most common label: 7,903 apps, or 81.82% of the cleaned sample. The label describes content suitability. It does not tell us the actual ages of users.",
+    "Count Content Rating labels and select the largest count.",
+    ""
+  ],
+  [
+    "B06",
+    "What are the top five most installed apps?",
+    "Facebook, WhatsApp Messenger, Instagram, Messenger and Subway Surfers are five representatives of the highest recorded install band, 1 billion+. Twenty apps share that band. The table uses review count, then app name, to break install ties. These are not five uniquely ranked winners by actual downloads.",
+    "Sort install lower bound descending, reviews descending, then app name ascending.",
+    ""
+  ],
+  [
+    "B07",
+    "How many apps have ratings of at least 4.0?",
+    "6,287 apps have a rating of 4.0 or higher. That is 76.71% of rated apps and 65.09% of all cleaned app records. Missing ratings are not counted as poor ratings.",
+    "Count Rating >= 4.0.",
+    ""
+  ],
+  [
+    "B08",
+    "What is the average review count for free and paid apps?",
+    "Free apps average 234,420.54 reviews; paid apps average 8,748.01. The medians are much lower: 1,379 and 88.5. A few large apps pull the averages upward. These are counts recorded in the app listing file, not the number of review texts supplied in the second CSV.",
+    "Group by Type and calculate mean and median Reviews.",
+    ""
+  ],
+  [
+    "B09",
+    "What is the average size in each category?",
+    "GAME has the largest average known size at 41.66 MB, followed by FAMILY at 27.31 MB and TRAVEL_AND_LOCAL at 24.20 MB. TOOLS has the smallest mean at 8.77 MB. The complete 33-category table is in the workbook and category_summary.csv; known-size counts show the denominator used for each mean.",
+    "Group by Category; average non-missing SizeMB.",
+    ""
+  ],
+  [
+    "B10",
+    "How many apps were last updated in 2018?",
+    "6,287 apps have a recorded last-update date in 2018, or 65.09% of the cleaned sample. This counts apps, not individual update releases. The dataset stops at a latest observed date of 8 August 2018.",
+    "Parse Last Updated and count records with year = 2018.",
+    ""
+  ],
+  [
+    "M01",
+    "How are installs and ratings correlated?",
+    "For 8,196 apps with ratings, Pearson r = 0.0402 and Spearman rho = 0.0272. Both are close to zero. Higher recorded installs do not have a strong overall relationship with rating in this sample. The binned analysis in A03 shows why a single correlation does not describe the whole pattern.",
+    "Pairwise complete observations; correlate InstallsMin and Rating.",
+    ""
+  ],
+  [
+    "M02",
+    "Which categories have the highest average ratings?",
+    "EVENTS leads at 4.436, followed by ART_AND_DESIGN at 4.359 and EDUCATION at 4.355. EVENTS has only 45 rated apps. Use the number of rated apps alongside the average, and do not treat a category mean as a forecast for a new product.",
+    "Group by Category, average Rating and sort descending.",
+    ""
+  ],
+  [
+    "M03",
+    "How is paid-app price related to rating?",
+    "Among 602 rated paid apps, Pearson r = −0.1140 and Spearman rho = −0.0965. This is a weak negative association. Apps priced above $10 average 4.127, compared with 4.301 for prices up to $1. The middle bands do not decline steadily. Twenty paid listings cost more than $100, so the rank correlation is a useful check on extreme prices. Exact-price means are supplied in paid_price_ratings.csv and the workbook.",
+    "Filter Type = Paid; group by price, then calculate pairwise Pearson and Spearman correlations.",
+    ""
+  ],
+  [
+    "M04",
+    "How do ratings differ across content labels?",
+    "The median rating is 4.3 for Everyone, Everyone 10+ and Teen, compared with 4.2 for Mature 17+. Their distributions overlap substantially. Adults only 18+ has only three rated apps and Unrated has one, so those groups do not support broad comparisons.",
+    "Use non-missing ratings in each content group; compare quartiles and a boxplot.",
+    "content_boxplot"
+  ],
+  [
+    "M05",
+    "Which genres have the most apps above one million installs?",
+    "Tools leads with 173 apps, followed by Action with 128 and Photography with 124. The filter is strictly greater than 1,000,000 on the recorded lower bound. Apps labelled exactly 1,000,000+ are excluded, even though some may have more than one million actual installs. Combined genre labels are kept intact to avoid counting one app more than once.",
+    "Filter InstallsMin > 1,000,000; count apps by the complete Genres string.",
+    ""
+  ],
+  [
+    "M06",
+    "What is the average time between app updates?",
+    "This cannot be calculated reliably from these files. Each selected app record contains one Last Updated value. Repeated listings are not a verified release history, and differences between different apps’ dates are not update intervals. A valid calculation needs an app identifier and a dated sequence of releases for each app. A02 shows the distribution of recorded last-update dates instead.",
+    "Not estimable: a longitudinal app release table is required.",
+    ""
+  ],
+  [
+    "M07",
+    "How is app size related to installs?",
+    "Among 8,431 known-size apps, Pearson r = 0.1342 and Spearman rho = 0.3102. Larger apps tend to appear in higher install bands, although the relationship is noisy and may reflect categories such as games. It does not show that increasing an app’s size will increase downloads. Apps with device-dependent size are excluded.",
+    "Plot SizeMB against InstallsMin + 1 on a log y-axis; correlate the untransformed values.",
+    "size_installs"
+  ],
+  [
+    "M08",
+    "Which apps have the most reviews, and what are their ratings?",
+    "Facebook has the largest recorded review count at 78,158,306, with a rating of 4.1. WhatsApp Messenger follows with 69,119,316 and a rating of 4.4. Instagram has 66,577,446 and a rating of 4.5. High visibility and strong ratings are different measures; the most-reviewed app is not the highest-rated app.",
+    "Sort Reviews descending; display the top ten app names and ratings.",
+    ""
+  ],
+  [
+    "M09",
+    "How do content labels differ between free and paid apps?",
+    "Everyone accounts for 81.41% of free apps and 86.60% of paid apps. Teen accounts for 11.05% of free apps and 6.90% of paid apps. Percentages use the total within each app type, so the unequal group sizes do not distort the comparison.",
+    "Crosstab Content Rating by Type; divide each count by its type total.",
+    ""
+  ],
+  [
+    "M10",
+    "Which five categories have the most installs?",
+    "GAME, COMMUNICATION, TOOLS, FAMILY and PRODUCTIVITY have the largest sums of recorded install lower bounds. GAME totals about 13.46 billion and COMMUNICATION about 11.04 billion. These totals combine apps and users can install several apps, so they are not unique audience counts or exact download totals.",
+    "Group by Category, sum InstallsMin, then take the five largest totals.",
+    "category_installs"
+  ],
+  [
+    "A01",
+    "Which ten apps have the highest ratings?",
+    "There are 271 apps tied at 5.0. The ten below are selected by rating, review count, install threshold and app name. Their review counts range from 43 to 141, and their install lower bounds from 100 to 5,000. A perfect score from a small group is not strong evidence of broad adoption. A separate top_rated_100_reviews.csv table provides a simple sensitivity check; the 100-review cutoff is an analyst choice.",
+    "Sort Rating, Reviews and InstallsMin descending, then App ascending.",
+    ""
+  ],
+  [
+    "A02",
+    "What patterns appear in app updates over time?",
+    "Recorded last-update dates cluster near the end of the dataset. July 2018 has 2,317 apps, the largest monthly count; June has 911 and August has 984. August is only observed through 8 August and cannot be compared as a full month. This is a last-update-date distribution, not a history of release activity. Seasonal update behaviour cannot be established from this snapshot.",
+    "Count app records by parsed last-update month and plot in date order.",
+    "update_timeline"
+  ],
+  [
+    "A03",
+    "How does average rating vary across install bands?",
+    "The average is 4.345 below 1,000 recorded installs, drops to 4.038 in the 10,000–<100,000 band, then rises to 4.370 at 100 million+. This is not a simple straight-line pattern. Only 638 of 1,790 apps in the smallest band have ratings, while all 233 in the largest band do. Different rating coverage and small review counts can affect comparisons.",
+    "Use fixed, non-overlapping bands of install lower bounds; calculate rated count, mean and median.",
+    "install_ratings"
+  ],
+  [
+    "A04",
+    "What do review sentiment and themes tell us?",
+    "The usable review set contains 29,692 distinct app/text records with sentiment labels. Of these, 28,250 match 816 cleaned app names. High-rated apps (rating >= 4.0) contribute 24,892 reviews; lower-rated apps contribute 3,358. Positive sentiment accounts for 65.70% in the high group and 53.22% in the low group. Negative sentiment accounts for 20.59% and 27.75%, respectively. The remaining reviews are neutral.",
+    "Reuse the dataset’s sentiment labels; join by exact app name; classify app rating bands; count dictionary-based text themes.",
+    "sentiment_bands"
+  ],
+  [
+    "A05",
+    "Are some genres rated higher or lower?",
+    "The unrestricted leaders include Board;Pretend Play and Comics;Creativity at 4.8, each based on one app. Among genres with at least 30 rated apps, Events leads at 4.436, followed by Puzzle at 4.370. Educational is lowest at 3.872, followed by Dating at 3.980. Mean and median differences describe this snapshot; they do not show that a genre is consistently better over time. The 30-app cutoff is a reporting safeguard, not a significance test.",
+    "Group by the full Genres label; report count, mean and median, with a 30-rated-app comparison.",
+    ""
+  ]
+]

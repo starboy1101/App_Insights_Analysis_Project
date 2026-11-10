@@ -1,0 +1,10 @@
+{
+  "Ads": "\\b(?:ads?|advert(?:s|ising|isement|isements)?)\\b",
+  "Crashes and reliability": "\\b(?:crash\\w*|bug\\w*|freez\\w*|frozen|glitch\\w*)\\b",
+  "Speed and loading": "\\b(?:slow\\w*|lag\\w*|loading|load|fast\\w*)\\b",
+  "Ease of use": "\\b(?:easy|easier|easiest|simple|complicated|confusing|intuitive)\\b",
+  "Payments and price": "\\b(?:pay|paid|payment\\w*|price\\w*|expensive|purchase\\w*|subscription\\w*|money|cost\\w*)\\b",
+  "Updates": "\\b(?:update\\w*|version\\w*)\\b",
+  "Enjoyment": "\\b(?:love|enjoy\\w*|fun|boring|addict\\w*)\\b",
+  "Account and access": "\\b(?:login|log in|sign in|account|password|access)\\b"
+}

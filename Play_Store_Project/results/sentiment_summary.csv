@@ -1,0 +1,10 @@
+RatingBand,Sentiment,Reviews
+High (>=4),Negative,5125
+High (>=4),Neutral,3414
+High (>=4),Positive,16353
+Low (<4),Negative,932
+Low (<4),Neutral,639
+Low (<4),Positive,1787
+Unrated / unmatched,Negative,264
+Unrated / unmatched,Neutral,303
+Unrated / unmatched,Positive,875
